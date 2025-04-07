@@ -1,7 +1,9 @@
+import 'package:chat_app_yes_no/presentation/providers/chat_provider.dart';
 import 'package:chat_app_yes_no/presentation/widgets/chat/her_messages_bubbles.dart';
 import 'package:chat_app_yes_no/presentation/widgets/chat/my_message_bubble.dart';
 import 'package:chat_app_yes_no/presentation/widgets/shared/message_field_box.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -29,6 +31,8 @@ class ChatScreen extends StatelessWidget {
 class _ChatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //*pedir que esté pendiente de cambios
+    final chatProvider = context.watch<ChatProvider>();
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -36,7 +40,7 @@ class _ChatView extends StatelessWidget {
           children: [
             Expanded(
               child: ListView.builder(
-                itemCount: 100,
+                itemCount: chatProvider.messageList.length,
                 itemBuilder: (context, index) {
                   return (index % 2 == 0)
                       ? const HerMessageBubble()
