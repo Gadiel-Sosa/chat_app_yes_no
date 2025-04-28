@@ -8,7 +8,10 @@ class ChatProvider extends ChangeNotifier {
       text: "Hola",
       fromWho: FromWho.hers,
     ),
-    Message(text: "Mundo", fromWho: FromWho.me),
+    Message(
+      text: "Mundo",
+      fromWho: FromWho.me,
+    ),
     Message(text: "Oxxo", fromWho: FromWho.hers),
     Message(text: "Oxxo", fromWho: FromWho.hers),
     Message(text: "Oxxo", fromWho: FromWho.me),
