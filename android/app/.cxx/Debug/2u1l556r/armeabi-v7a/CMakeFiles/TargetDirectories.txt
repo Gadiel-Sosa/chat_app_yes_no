@@ -1,0 +1,2 @@
+C:/Users/sosac/Desktop/Topicos_proyectos/chat_app/chat_app_yes_no/android/app/.cxx/Debug/2u1l556r/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/sosac/Desktop/Topicos_proyectos/chat_app/chat_app_yes_no/android/app/.cxx/Debug/2u1l556r/armeabi-v7a/CMakeFiles/rebuild_cache.dir

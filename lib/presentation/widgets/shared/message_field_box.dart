@@ -23,6 +23,7 @@ class MessageFieldBox extends StatelessWidget {
         icon: Icon(Icons.send_outlined),
         onPressed: () {
           final textValue = textController.value.text;
+          // ignore: avoid_print
           print('button: $textValue');
           textController.clear();
         },
@@ -37,6 +38,7 @@ class MessageFieldBox extends StatelessWidget {
       controller: textController,
       decoration: inputDecoration,
       onFieldSubmitted: (value) {
+        // ignore: avoid_print
         print('submit value: $value');
         textController.clear();
         focusNode.requestFocus();
