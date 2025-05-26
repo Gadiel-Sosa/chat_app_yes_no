@@ -34,18 +34,19 @@ class HerMessageBubble extends StatelessWidget {
         if (message.imageUrl != null) _ImageBubble(imageUrl: message.imageUrl!),
 
         const SizedBox(height: 5),
-
-        // Hora + ícono de visto
         Row(
-          mainAxisSize: MainAxisSize.max,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               time,
               style: const TextStyle(fontSize: 10, color: Colors.grey),
             ),
-            Text(
-              date,
-              style: const TextStyle(fontSize: 10, color: Colors.grey),
+            const SizedBox(width: 5),
+            const SizedBox(width: 5),
+            const Icon(
+              Icons.done_all,
+              size: 14,
+              color: Colors.grey, // siempre ícono azul
             ),
           ],
         ),

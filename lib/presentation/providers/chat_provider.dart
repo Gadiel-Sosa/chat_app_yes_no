@@ -8,6 +8,7 @@ class ChatProvider extends ChangeNotifier {
   final ScrollController chatScrollController = ScrollController();
   final getYesNoAnswer = GetYesNoAnswer();
   List<Message> messageList = [];
+
   Future<void> sendMessage(String text) async {
     if (text.trim().isEmpty) return;
     // Asincrono (no al mismo tiempo)

@@ -16,10 +16,10 @@ class YesNoModel {
       );
   Message toMessageEntity() => Message(
         text: answer == 'yes'
-            ? 'Sí'
-            : answer == 'no'
-                ? 'No'
-                : 'Tal vez',
+            ? 'claro'
+            : answer == 'yes'
+                ? 'Obvio'
+                : 'Ya sabes',
         fromWho: FromWho.hers,
         imageUrl: image,
         timeSent: DateTime.now(),

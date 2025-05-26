@@ -28,8 +28,6 @@ class MyMessageBubble extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 5),
-
-        // Hora e ícono de "visto"
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [

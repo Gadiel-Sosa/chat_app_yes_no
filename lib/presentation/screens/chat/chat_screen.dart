@@ -17,51 +17,45 @@ class ChatScreen extends StatelessWidget {
           padding: const EdgeInsets.all(4.0),
           child: CircleAvatar(
             backgroundImage: NetworkImage(
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx1bNUUz_1tMH69FisHpqEUVOdmvjMgQY5Yg&s'),
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx1bNUUz_1tMH69FisHpqEUVOdmvjMgQY5Yg&s',
+            ),
           ),
         ),
-        title: Text('Emma ✨'),
+        title: const Text('Emma ✨'),
         centerTitle: false,
       ),
-      //*CONTINUACION VIDEO 4
-      body: _ChatView(),
+      body: const _ChatView(),
     );
   }
 }
 
 class _ChatView extends StatelessWidget {
+  const _ChatView({super.key});
+
   @override
   Widget build(BuildContext context) {
-    //*pedir que esté pendiente de cambios
     final chatProvider = context.watch<ChatProvider>();
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: [
+            // Lista de mensajes
             Expanded(
               child: ListView.builder(
-                //enlaza e controlador creado en el provider
                 controller: chatProvider.chatScrollController,
                 itemCount: chatProvider.messageList.length,
-
                 itemBuilder: (context, index) {
-                  //* Instancia que sabrá de quien es el mensaje
                   final message = chatProvider.messageList[index];
-                  //* Si el residuo es 0 es de ella y si no es 0 es mio
-                  //* Si es par es de ella si no es mio
-                  //return (index % 2 == 0)
                   return (message.fromWho == FromWho.hers)
-                      ? HerMessageBubble(
-                          message: message,
-                        )
-                      : MyMessageBubble(
-                          message: message,
-                        );
+                      ? HerMessageBubble(message: message)
+                      : MyMessageBubble(message: message);
                 },
               ),
             ),
-            //* CAJA DE TEXTO DE MENSAJES
+
+            // Caja de texto
             MessageFieldBox(
               onValue: chatProvider.sendMessage,
             ),
@@ -71,5 +65,3 @@ class _ChatView extends StatelessWidget {
     );
   }
 }
-
-// Terminé el video 3 continuar en el 4
