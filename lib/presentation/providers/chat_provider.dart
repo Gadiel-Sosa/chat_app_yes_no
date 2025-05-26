@@ -8,11 +8,14 @@ class ChatProvider extends ChangeNotifier {
   final ScrollController chatScrollController = ScrollController();
   final getYesNoAnswer = GetYesNoAnswer();
   List<Message> messageList = [];
-
   Future<void> sendMessage(String text) async {
     if (text.trim().isEmpty) return;
     // Asincrono (no al mismo tiempo)
-    final newMessage = Message(text: text.trim(), fromWho: FromWho.me);
+    final newMessage = Message(
+      text: text.trim(),
+      fromWho: FromWho.me,
+      timeSent: DateTime.now(),
+    );
     messageList.add(newMessage);
     //* Detectar si el usuario hizo una pregunta
     //* Si el mensaje termina en ? se manda la respuesta

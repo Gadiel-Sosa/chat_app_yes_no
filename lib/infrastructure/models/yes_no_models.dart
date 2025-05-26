@@ -22,5 +22,6 @@ class YesNoModel {
                 : 'Tal vez',
         fromWho: FromWho.hers,
         imageUrl: image,
+        timeSent: DateTime.now(),
       );
 }

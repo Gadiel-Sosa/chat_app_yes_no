@@ -1,5 +1,6 @@
 import 'package:chat_app_yes_no/domain/entities/message.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class HerMessageBubble extends StatelessWidget {
   final Message message;
@@ -8,32 +9,46 @@ class HerMessageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    final time = DateFormat('hh:mm a').format(message.timeSent);
+    final date = DateFormat('dd MMM yyyy').format(message.timeSent);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Texto
         Container(
           decoration: BoxDecoration(
-              color: colors.secondary, borderRadius: BorderRadius.circular(20)),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Text(
-              message.text,
-              style: TextStyle(color: Colors.white),
-            ),
+            color: colors.secondary,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Text(
+            message.text,
+            style: const TextStyle(color: Colors.white),
           ),
         ),
-        SizedBox(
-          height: 5,
-        ),
-        _ImageBubble(
-          imageUrl: message.imageUrl!,
-        ), // Aqui se va a mostrar la imagen
 
-        SizedBox(
-          height: 5,
-        ),
+        const SizedBox(height: 5),
 
-        // Todo: imagen
+        // Imagen si existe
+        if (message.imageUrl != null) _ImageBubble(imageUrl: message.imageUrl!),
+
+        const SizedBox(height: 5),
+
+        // Hora + ícono de visto
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Text(
+              time,
+              style: const TextStyle(fontSize: 10, color: Colors.grey),
+            ),
+            Text(
+              date,
+              style: const TextStyle(fontSize: 10, color: Colors.grey),
+            ),
+          ],
+        ),
       ],
     );
   }
@@ -43,10 +58,11 @@ class _ImageBubble extends StatelessWidget {
   final String imageUrl;
 
   const _ImageBubble({super.key, required this.imageUrl});
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    // print(size);
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Image.network(
